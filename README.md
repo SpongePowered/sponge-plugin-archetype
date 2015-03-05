@@ -20,6 +20,8 @@ These can be specified as arguments to Maven in the form -Dproperty=value
 ## Usage
 This archetype requires Maven 3 or newer. Invoke maven with the goal archetype:generate. Maven will prompt for any required paramaters, but optional parameters must be specified on the command line.
 
+***WARNING***: This archetype is not currently published on any repositories. It must be downloaded and installed (with `mvn clean install`) locally to be used in projects.
+
 ```bash
 $ mvn archetype:generate -DarchetypeCatalog=http://repo.spongepowered.org/maven -DgithubProject=waylon531/spongeparty
 ```
