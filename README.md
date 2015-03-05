@@ -8,7 +8,7 @@ The generated pom includes a release profile that generates gpg-signed jars for 
 The archetype plugin accepts a few properties
 
 Property      | Example value            | Description
-----------------------------------------------------------------------------------------------------------------
+--------------|--------------------------|---------------------------------------------------------------------
 groupId       | io.github.user           | The maven groupId, useful more for plugins used as dependencies, but should more or less match your package name
 artifactId    | myproject                | The project id, alse used as plugin id and name of the generated folder
 version       | 1.0-SNAPSHOT             | The initial version for your plugin. Can (and should) be changed as development progresses
