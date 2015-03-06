@@ -21,7 +21,7 @@ These can be specified as arguments to Maven in the form -Dproperty=value
 This archetype requires Maven 3 or newer. Invoke maven with the goal archetype:generate. Maven will prompt for any required paramaters, but optional parameters must be specified on the command line.
 
 ```bash
-$ mvn archetype:generate -DgithubProject=waylon531/spongeparty
+$ mvn archetype:generate -DarchetypeCatalog=http://repo.spongepowered.org/maven -DgithubProject=waylon531/spongeparty
 ```
 
 This archetype will be in the presented list under the specifier org.spongepowered:sponge-plugin-archetype. 
