@@ -18,13 +18,8 @@ githubProject | user/repo                | The github project. If a value is spe
 These can be specified as arguments to Maven in the form -Dproperty=value
 
 ## Usage
-This archetype requires Maven 3 or newer. Invoke maven with the goal archetype:generate. Maven will prompt for any required paramaters, but optional parameters must be specified on the command line.
-
-***WARNING***: This archetype is not currently published on any repositories. It must be downloaded and installed (with `mvn clean install`) locally to be used in projects.
+This archetype requires Maven 3 or newer. Invoke maven with the goal archetype:generate. Maven will prompt for any required paramaters, but optional parameters must be specified on the command line. Everything before `-DgithubProject...` is mandatory.
 
 ```bash
-$ mvn archetype:generate -DarchetypeCatalog=http://repo.spongepowered.org/maven -DgithubProject=waylon531/spongeparty
+$ mvn archetype:generate -DarchetypeArtifactId=sponge-plugin-archetype -DarchetypeGroupId=org.spongepowered -DarchetypeRepository=http://repo.spongepowered.org/maven -DarchetypeVersion=1.0-SNAPSHOT -DgithubProject=waylon531/spongeparty
 ```
-
-This archetype will be in the presented list under the specifier org.spongepowered:sponge-plugin-archetype. 
-
