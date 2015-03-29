@@ -4,13 +4,14 @@
 
   <groupId>org.spongepowered</groupId>
   <artifactId>sponge-plugin-archetype</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>maven-archetype</packaging>
 
   <name>Sponge Plugin Archetype</name>
   <description>A basic Maven archetype that creates a Sponge plugin</description>
   <properties>
       <chRepo>http://repo.spongepowered.org/maven</chRepo>
+      <encoding>utf8</encoding>
   </properties>
   <distributionManagement>
       <repository>
