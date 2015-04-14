@@ -12,7 +12,7 @@ import org.spongepowered.api.event.state.PreInitializationEvent;
 import org.spongepowered.api.event.state.ServerStoppingEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.service.config.DefaultConfig;
-import org.spongepowered.api.util.event.Subscribe;
+import org.spongepowered.api.event.Subscribe;
 
 /**
  * PermissionsEx plugin
