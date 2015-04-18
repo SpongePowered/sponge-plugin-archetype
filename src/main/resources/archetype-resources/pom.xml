@@ -1,3 +1,4 @@
+#set( $symbol_dollar = '$' )
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -5,23 +6,42 @@
   <artifactId>${artifactId}</artifactId>
   <version>${version}</version>
   <name>${artifactId}</name>
-  <description>A one-line description of this Sponge plugin</description>
+  <description xml:space="preserve">
+    A one-line description of this Sponge plugin. Override this page by creating a file called index.md in src/site/markdown/
+  </description>
   <properties>
+    <siteUrlSuffix>${project.version}</siteUrlSuffix>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.configurate>1.0-SNAPSHOT</version.configurate>
+    #if( $githubProject && $githubProject != "user/repo" )
+    #set( $ghUser = $githubProject.substring(0, $githubProject.indexOf('/')))
+    #set( $ghSlashIndex = $githubProject.indexOf('/') + 1 )
+    #set( $ghRepo = $githubProject.substring($ghSlashIndex))
+    <ghUser>${ghUser}</ghUser>
+    <ghRepo>${ghRepo}</ghRepo>
+    <ghProject>${symbol_dollar}{ghUser}/${symbol_dollar}{ghRepo}</ghProject>
+
   </properties>
-  #if( $githubProject && $githubProject != "user/repo" )
-  <url>https://github.com/${githubProject}</url>
+
+  <url>https://${symbol_dollar}{ghUser}.github.io/${symbol_dollar}{ghRepo}</url>
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/${githubProject}/issues</url>
+    <url>https://github.com/${symbol_dollar}{ghProject}/issues</url>
   </issueManagement>
   <scm>
-    <connection>scm:git:git://github.com/${githubProject}.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/${githubProject}.git</developerConnection>
-    <url>https://github.com/${githubProject}</url>
+    <connection>scm:git:git://github.com/${symbol_dollar}{ghProject}.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com${symbol_dollar}{ghProject}.git</developerConnection>
+    <url>https://github.com/${symbol_dollar}{ghProject}</url>
   </scm>
-  #end
+  <distributionManagement>
+    <site>
+      <id>gh-pages</id>
+      <name>GitHub Pages</name>
+      <url>github:http://${symbol_dollar}{ghUser}.github.io/${symbol_dollar}{ghRepo}/${symbol_dollar}{siteUrlSuffix}/</url>
+    </site>
+  </distributionManagement>
+  #else
+  </properties>
+#end
   <prerequisites>
     <maven>3.0.3</maven>
   </prerequisites>
@@ -128,6 +148,36 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.3</version>
+        <dependencies>
+
+          #if( $githubProject && $githubProject != "user/repo" )
+          <dependency>
+            <groupId>net.trajano.wagon</groupId>
+            <artifactId>wagon-git</artifactId>
+            <version>2.0.3</version>
+          </dependency>
+          #end
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>1.6</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <tagNameFormat>@{project.version}</tagNameFormat>
+          <scmCommentPrefix xml:space="preserve">[RELEASE] </scmCommentPrefix>
+          <goals>install deploy site-deploy</goals> <!-- install is here to fix javadoc generation in multi-module projects -->
+          <releaseProfiles>release</releaseProfiles>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -148,7 +198,7 @@
   <repositories>
     <repository>
       <id>sponge-repo</id>
-      <url>https://repo.spongepowered.org/maven</url>
+      <url>http://repo.spongepowered.org/maven</url>
     </repository>
   </repositories>
   <reporting>
