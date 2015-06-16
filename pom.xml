@@ -25,7 +25,10 @@
     <connection>scm:git:git://github.com/SpongePowered/sponge-plugin-archetype.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/SpongePowered/sponge-plugin-archetype.git</developerConnection>
     <url>https://github.com/SpongePowered/sponge-plugin-archetype</url>
-  </scm>
+</scm>
+<prerequisites>
+    <maven>2.2.1</maven>
+</prerequisites>
 
   <build>
     <extensions>
