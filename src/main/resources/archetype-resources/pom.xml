@@ -6,7 +6,7 @@
   <artifactId>${artifactId}</artifactId>
   <version>${version}</version>
   <name>${artifactId}</name>
-  <description xml:space="preserve">
+  <description>
     A one-line description of this Sponge plugin. Override this page by creating a file called index.md in src/site/markdown/
   </description>
   <properties>
@@ -29,7 +29,7 @@
   </issueManagement>
   <scm>
     <connection>scm:git:git://github.com/${symbol_dollar}{ghProject}.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com${symbol_dollar}{ghProject}.git</developerConnection>
+    <developerConnection>scm:git:ssh://git@github.com:${symbol_dollar}{ghProject}.git</developerConnection>
     <url>https://github.com/${symbol_dollar}{ghProject}</url>
   </scm>
   <distributionManagement>
@@ -108,32 +108,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.14</version>
-        <configuration>
-          <ignores>
-            <ignore>java.lang.Throwable</ignore>
-          </ignores>
-          <signature>
-            <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java16</artifactId>
-            <version>1.0</version>
-          </signature>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <phase>test</phase>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

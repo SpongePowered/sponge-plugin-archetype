@@ -8,11 +8,11 @@ import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
-import org.spongepowered.api.event.state.PreInitializationEvent;
-import org.spongepowered.api.event.state.ServerStoppingEvent;
+import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
+import org.spongepowered.api.event.game.state.GameStoppingServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.service.config.DefaultConfig;
-import org.spongepowered.api.event.Subscribe;
+import org.spongepowered.api.event.Listener;
 
 /**
  * A simple sponge plugin
@@ -26,13 +26,13 @@ public class MyPlugin {
     @Inject @DefaultConfig(sharedRoot = true) private ConfigurationLoader<CommentedConfigurationNode> configLoader;
     @Inject private Game game;
 
-    @Subscribe
-    public void onPreInit(PreInitializationEvent event) {
+    @Listener
+    public void onPreInit(GamePreInitializationEvent event) {
         // Perform initialization tasks here
     }
 
-    @Subscribe
-    public void disable(ServerStoppingEvent event) {
+    @Listener
+    public void disable(GameStoppingServerEvent event) {
         // Perform shutdown tasks here
     }
 }
