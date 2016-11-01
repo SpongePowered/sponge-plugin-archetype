@@ -161,7 +161,7 @@
     <dependency>
       <groupId>org.spongepowered</groupId>
       <artifactId>spongeapi</artifactId>
-      <version>[3.0.0,3.1.0)</version>
+      <version>[5.0.0,5.1.0)</version>
       <type>jar</type>
       <scope>provided</scope>
     </dependency>
